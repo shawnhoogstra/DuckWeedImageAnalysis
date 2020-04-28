@@ -11,7 +11,8 @@ The input image should now display on your screen. In order to make this program
 
 ## How it Works
 Duck Weed Image Analysis utilizes a python package called plantcv for image analysis. PlantCV is an imagine analysis software library containing multiple functions for assessing plant phenotypes. This tool mainly utilizes code from the multi-plant tutorial (https://plantcv.readthedocs.io/en/stable/multi-plant_tutorial/) in order to accurately divide the multiple well plate into separate images and assess their green pixel count. 
-    
+
+### Citation
     Fahlgren N, Feldman M, Gehan MA, Wilson MS, Shyu C, Bryant DW, Hill ST, McEntee CJ, Warnasooriya SN, Kumar I, Ficor T, Turnipseed S, Gilbert KB, Brutnell TP, Carrington JC, Mockler TC, Baxter I. (2015) A versatile phenotyping system and analytics platform reveals diverse temporal responses to water availability in Setaria. Molecular Plant 8: 1520-1535. http://doi.org/10.1016/j.molp.2015.06.005
 
 ## Issues
