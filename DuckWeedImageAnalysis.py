@@ -102,6 +102,7 @@ def draw_plot(x_start, y_start, x_end, y_end, reference_file, save_file):
 	with open(save_file, "w", newline="") as fil:
 		writer = csv.writer(fil)
 		writer.writerows(results)
+		sg.Popup('Finished Analysis! Please see the .csv file for results!')
 	
 def image_analysis(input_image, reference_file, save_file):
 	"""
@@ -129,8 +130,9 @@ def image_analysis(input_image, reference_file, save_file):
 	# Grab window size to display the image of the appropriate height/width
 	win_width, win_height = sg.Window.get_screen_size()
 	
-	# Leave a 100 pixel gap for text
-	win_height = win_height - 100
+	# Leave a 100 pixel gap for text and button
+	print(int(np.round(win_height*0.15)))
+	win_height = win_height - int(np.round(win_height*0.15)) #100
 	win_ratio = win_width/(win_height)
 
 	# Set layout to contain the image as a pysimplegui graph, followed by text
@@ -146,7 +148,9 @@ def image_analysis(input_image, reference_file, save_file):
 				change_submits=True
 			)
 		],[
-			sg.Text("", key="info", size=(100,10),font=("Helvetica", 25))
+			sg.Text("", key="info", size=(80,1),font=("Helvetica", 20))
+		],[
+			sg.Button('Perform another Analysis?',font=("Helvetica",20)), sg.Exit()
 		]
 	]
 
@@ -190,6 +194,12 @@ def image_analysis(input_image, reference_file, save_file):
 		info  = window.Element("info")
 		info.Update(value="Please select the tray.")
 		
+		
+		if event == 'Perform another Analysis?':
+			window.Close()
+			main()
+		
+		
 		print(event)
 		if event is None:
 			break # exit
@@ -218,7 +228,7 @@ def image_analysis(input_image, reference_file, save_file):
 			
 			# Calculate green pixels using PlantCV
 			draw_plot(start_point[0], start_point[1], end_point[0], end_point[1], reference_file, save_file)
-
+			
 	window.close()
 	
 def main():
